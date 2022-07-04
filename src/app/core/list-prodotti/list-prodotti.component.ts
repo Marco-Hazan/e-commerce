@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Prodotto } from 'src/app/model/prodotto';
+import { ProdottoRepositoryService } from 'src/app/model/prodotto-repository.service';
 
 @Component({
   selector: 'app-list-prodotti',
@@ -7,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListProdottiComponent implements OnInit {
 
-  constructor() { }
+  public prodotti: Prodotto[] = [];
+  constructor(private repo:ProdottoRepositoryService) { 
+    this.prodotti = repo.getAll();
+  }
+
+
+  rimuovi(id:number|undefined){
+    if(id != undefined)
+      this.repo.delete(id);
+  }
+
 
   ngOnInit(): void {
   }

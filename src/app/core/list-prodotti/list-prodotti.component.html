@@ -1,1 +1,26 @@
-<p>list-prodotti works!</p>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Prezzo</th>
+            <th>Descrizione</th>
+            <th>Taglia</th>
+            <th>Azione</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of prodotti">
+            <td>{{p.id}}</td>
+            <td>{{p.nome}}</td>
+            <td>{{p.prezzo}}</td>
+            <td>{{p.descrizione}}</td>
+            <td>{{p.taglia}}</td>
+            <td>
+                <button (click) = "rimuovi(p.id)" class="btn btn-danger">RIMUOVI</button>
+                <button class="btn btn-warning" routerLink = "/modifica-prodotto" [queryParams]="{id: p.id}">MODIFICA</button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>

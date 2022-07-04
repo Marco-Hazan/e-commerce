@@ -1,0 +1,53 @@
+<div class="container-fluid">
+    <h2 class="m-4">Modifica il tuo prodotto</h2>
+    
+        <form action="" (ngSubmit)="modificaProdotto()" [formGroup]="formModifica" >
+            <div class="form-row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input class="form-control " formControlName="nome" type="text" id="nome" [value] = "prodotto.nome">
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="prezzo">Prezzo:</label>
+                        <input class="form-control w-50" type="number" formControlName="prezzo" id="descrizione" [value] = "prodotto.descrizione">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row align-items-center">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="descrizione">Descrizione:</label>
+                        <textarea class="form-control" formControlName="descrizione" rows="2" cols="3"
+                            id="descrizione">{{prodotto.descrizione}}</textarea>
+                    </div>
+    
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="taglia">Taglia:</label>
+                        <input class="form-control w-50" type="number" formControlName="taglia" id="taglia" [value] = "prodotto.taglia">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="form-row align-items-center">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="immagine">Immagine:</label>
+                            <input class="form-control" type="text" formControlName="immagine" id="immagine" [value] = "prodotto.immagine">
+                        </div>
+                    </div>
+                    <div class="col-4 align-self-end ml-3">
+                        <div class="form-group">
+                            <button class="btn btn-success">MODIFICA</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        </form>
+    </div>
+    

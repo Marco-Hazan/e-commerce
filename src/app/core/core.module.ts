@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { FormProdottoComponent } from './form-prodotto/form-prodotto.component';
+import { RouterModule } from '@angular/router';
+import { ModificaProdottoComponent } from './modifica-prodotto/modifica-prodotto.component';
 
 
 
@@ -16,12 +18,14 @@ import { FormProdottoComponent } from './form-prodotto/form-prodotto.component';
     ProdottoComponent,
     HomeComponent,
     FormProdottoComponent,
-    SideBarComponent
+    SideBarComponent,
+    ModificaProdottoComponent
   ],
   imports: [
     CommonModule,
     ModelModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ]
 })
 export class CoreModule { }

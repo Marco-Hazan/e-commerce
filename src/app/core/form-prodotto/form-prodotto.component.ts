@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Prodotto } from 'src/app/model/prodotto';
+import { ProdottoRepositoryService } from 'src/app/model/prodotto-repository.service';
 
 @Component({
   selector: 'app-form-prodotto',
@@ -10,9 +13,9 @@ export class FormProdottoComponent implements OnInit {
 
   formProdotto: FormGroup;
 
-  constructor() {
+  constructor(private repo: ProdottoRepositoryService, private router:Router) {
     this.formProdotto = new FormGroup({
-      'nome': new FormControl( '',[ Validators.required, Validators.minLength(2), Validators.pattern("^[A-Za-z ]+$"), ]),
+      'nome': new FormControl( '',[ Validators.required, Validators.minLength(2) ]),
       'descrizione': new FormControl('', [Validators.required]),
       'prezzo': new FormControl(0, [Validators.required]),
       'taglia': new FormControl(0, [Validators.required]),
@@ -24,20 +27,34 @@ export class FormProdottoComponent implements OnInit {
     return this.formProdotto.get('nome');
   }
 
-  get cognome(){
-    return this.formProdotto.get('cognome');
+  get descrizione(){
+    return this.formProdotto.get('descrizione');
   }
 
-  get citta(){
-    return this.formProdotto.get('citta');
+  get prezzo(){
+    return this.formProdotto.get('prezzo');
   }
 
-  get indirizzo(){
-    return this.formProdotto.get('indirizzo');
+  get taglia(){
+    return this.formProdotto.get('taglia');
+  }
+
+  get immagine(){
+    return this.formProdotto.get('immagine')
   }
 
   inviaProdotto(){
-    
+    if(this.formProdotto.valid){
+      let p:Prodotto = {
+        "nome" : this.nome?.value,
+        "descrizione" : this.descrizione?.value,
+        "prezzo": Number(this.prezzo?.value),
+        "immagine" : this.immagine?.value,
+        "taglia" : Number(this.taglia?.value)
+      }
+      let id = this.repo.save(p);
+      this.router.navigateByUrl("/list-prodotti")
+    }
   }
 
 

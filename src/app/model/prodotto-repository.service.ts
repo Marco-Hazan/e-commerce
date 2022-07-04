@@ -10,4 +10,20 @@ export class ProdottoRepositoryService {
   getAll(): Prodotto[]{
     return this.datasource.getAll();
   }
+
+  save(p: Prodotto): number{
+    return this.datasource.saveProdotto(p);
+  }
+
+  get(id:number){
+    return this.datasource.get(id);
+  }
+
+  delete(id:number){
+    this.datasource.deleteProdotto(id);
+  }
+
+  modifica(p:Prodotto,id:number){
+    this.datasource.modifica(p,id);
+  }
 }
