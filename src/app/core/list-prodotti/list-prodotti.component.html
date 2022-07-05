@@ -17,8 +17,8 @@
             <td>{{p.descrizione}}</td>
             <td>{{p.taglia}}</td>
             <td>
-                <button (click) = "rimuovi(p.id)" class="btn btn-danger">RIMUOVI</button>
-                <button class="btn btn-warning" routerLink = "/modifica-prodotto" [queryParams]="{id: p.id}">MODIFICA</button>
+                <button (click) = "rimuovi(p.id)" class="btn btn-danger mr-3">RIMUOVI</button>
+                <button class="btn btn-warning" routerLink = "/modifica-prodotto/{{p.id}}">MODIFICA</button>
             </td>
         </tr>
     </tbody>

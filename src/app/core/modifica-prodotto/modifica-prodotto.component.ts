@@ -15,19 +15,17 @@ export class ModificaProdottoComponent implements OnInit {
   prodotto!:Prodotto;
   prodottoId!:number;
   constructor(private repo: ProdottoRepositoryService, private route: ActivatedRoute,  private router:Router) {
-    this.route.queryParams.subscribe( 
-      params => {
-        this.prodottoId = params['id'];
-        console.log(this.prodottoId);
-        let p = this.repo.get(this.prodottoId);
+    let param = route.snapshot.paramMap.get("id");
+    if(param){
+      this.prodottoId = Number(param);
+      let p = this.repo.get(this.prodottoId);
         if(p){
           this.prodotto = p;
         }
-      }
-    )
+    }
     this.formModifica = new FormGroup({
       'nome': new FormControl( this.prodotto.nome,[ Validators.required, Validators.minLength(2) ]),
-      'descrizione': new FormControl(this.prodotto.descrizione, [Validators.required]),
+      'descrizione': new FormControl(this.prodotto.descrizione, [Validators.required, Validators.maxLength(20)]),
       'prezzo': new FormControl(this.prodotto.prezzo, [Validators.required]),
       'taglia': new FormControl(this.prodotto.taglia, [Validators.required]),
       'immagine': new FormControl(this.prodotto.immagine, [Validators.required])

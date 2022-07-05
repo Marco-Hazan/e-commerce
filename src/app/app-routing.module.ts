@@ -9,7 +9,7 @@ const routes: Routes = [
   {path:"home", component:HomeComponent},
   {path: "list-prodotti", component: ListProdottiComponent },
   {path:"add-prodotto",component: FormProdottoComponent},
-  {path:"modifica-prodotto",component: ModificaProdottoComponent},
+  {path:"modifica-prodotto/:id",component: FormProdottoComponent},
   {path: "**", redirectTo: "/home"}
 ];
 

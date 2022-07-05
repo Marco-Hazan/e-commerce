@@ -1,52 +1,74 @@
-<div class="container-fluid">
-<h2 class="m-4">Inserisci il tuo prodotto</h2>
+<div class="row justify-content-center">
+    <div class="col-4">
+        <h2 *ngIf="!modifica" class="m-4">Inserisci il tuo prodotto</h2>
+        <h2 *ngIf="modifica" class="m-4">Modifica il tuo prodotto</h2>
 
-    <form action="" (ngSubmit)="inviaProdotto()" [formGroup]="formProdotto">
-        <div class="form-row">
-            <div class="col-4">
-                <div class="form-group">
-                    <label for="nome">Nome:</label>
-                    <input class="form-control " formControlName="nome" type="text" id="nome">
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="form-group">
-                    <label for="prezzo">Prezzo:</label>
-                    <input class="form-control w-50" type="number" formControlName="prezzo" id="descrizione">
-                </div>
-            </div>
-        </div>
-        <div class="form-row align-items-center">
-            <div class="col-4">
-                <div class="form-group">
-                    <label for="descrizione">Descrizione:</label>
-                    <textarea class="form-control" formControlName="descrizione" rows="2" cols="3"
-                        id="descrizione"></textarea>
-                </div>
-
-            </div>
-            <div class="col-4">
-                <div class="form-group">
-                    <label for="taglia">Taglia:</label>
-                    <input class="form-control w-50" type="number" formControlName="taglia" id="taglia">
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="form-row align-items-center">
-                <div class="col-4">
+        <form action="" (ngSubmit)="inviaProdotto()" [formGroup]="formProdotto" autocomplete="off">
+            <div class="form-row">
+                <div class="col">
                     <div class="form-group">
-                        <label for="immagine">Immagine:</label>
-                        <input class="form-control" type="text" formControlName="immagine" id="immagine">
+                        <label for="nome">Nome:</label>
+                        <input class="form-control " formControlName="nome" type="text" id="nome">
+                        <ul class="text-danger" *ngIf="nome?.touched && nome?.invalid">
+                            <li *ngIf="nome?.errors?.['required']">Il nome è obbligatorio</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-4 align-self-end ml-3">
+                <div class="col">
                     <div class="form-group">
-                        <button class="btn btn-success">INSERISCI</button>
+                        <label for="prezzo">Prezzo:</label>
+                        <input class="form-control w-50" type="number" formControlName="prezzo" id="descrizione">
                     </div>
+                    <ul class="text-danger" *ngIf="prezzo?.touched && prezzo?.invalid">
+                        <li *ngIf="prezzo?.errors?.['required']">Il prezzo è obbligatorio</li>
+                    </ul>
                 </div>
             </div>
-        </div>
+            <div class="form-row ">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="descrizione">Descrizione:</label>
+                        <textarea class="form-control" formControlName="descrizione" rows="2" cols="3"
+                            id="descrizione"></textarea>
+                    </div>
+                    <ul class="text-danger" *ngIf="descrizione?.touched && descrizione?.invalid">
+                        <li *ngIf="descrizione?.errors?.['required']">La descrizione è obbligatoria</li>
+                        <li *ngIf="descrizione?.errors?.['maxlength']">La descrizione è troppo lunga</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="taglia">Taglia:</label>
+                        <input class="form-control w-50" type="number" formControlName="taglia" id="taglia">
+                    </div>
+                    <ul class="text-danger" *ngIf="taglia?.touched && taglia?.invalid">
+                        <li *ngIf="taglia?.errors?.['required']">La taglia è obbligatoria</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="immagine">Immagine:</label>
+                            <input class="form-control" type="text" formControlName="immagine" id="immagine">
+                        </div>
+                        <ul class="text-danger" *ngIf="immagine?.dirty && immagine?.invalid">
+                            <li *ngIf="immagine?.errors?.['required']">L'immagine' è obbligatoria</li>
+                        </ul>
+                    </div>
+                    <div class="col align-self-end ml-3">
+                        <div class="form-group">
+                            <button *ngIf="!modifica" class="btn btn-success">INSERISCI</button>
+                            <button *ngIf="modifica" class="btn btn-success">MODIFICA</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-danger justify-content-center mr-5">
+                    {{erroreInserimento}}
+                </div>
+            </div>
 
-    </form>
+        </form>
+    </div>
 </div>
