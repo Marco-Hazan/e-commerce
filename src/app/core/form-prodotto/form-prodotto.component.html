@@ -1,11 +1,11 @@
 <div class="row justify-content-center">
-    <div class="col-4">
-        <h2 *ngIf="!modifica" class="m-4">Inserisci il tuo prodotto</h2>
-        <h2 *ngIf="modifica" class="m-4">Modifica il tuo prodotto</h2>
+    <div class="col-4 border-primary bg-secondary">
+        <h2 *ngIf="!modifica" class="m-4 text-center">Inserisci il tuo prodotto</h2>
+        <h2 *ngIf="modifica" class="m-4 text-center">Modifica il tuo prodotto</h2>
 
         <form action="" (ngSubmit)="inviaProdotto()" [formGroup]="formProdotto" autocomplete="off">
             <div class="form-row">
-                <div class="col">
+                <div class="col-8">
                     <div class="form-group">
                         <label for="nome">Nome:</label>
                         <input class="form-control " formControlName="nome" type="text" id="nome">
@@ -14,18 +14,18 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-4">
                     <div class="form-group">
                         <label for="prezzo">Prezzo:</label>
-                        <input class="form-control w-50" type="number" formControlName="prezzo" id="descrizione">
+                        <input class="form-control" type="number" formControlName="prezzo" id="descrizione">
                     </div>
                     <ul class="text-danger" *ngIf="prezzo?.touched && prezzo?.invalid">
                         <li *ngIf="prezzo?.errors?.['required']">Il prezzo è obbligatorio</li>
                     </ul>
                 </div>
             </div>
-            <div class="form-row ">
-                <div class="col">
+            <div class="form-row justify-content-center">
+                <div class="col-8">
                     <div class="form-group">
                         <label for="descrizione">Descrizione:</label>
                         <textarea class="form-control" formControlName="descrizione" rows="2" cols="3"
@@ -36,10 +36,10 @@
                         <li *ngIf="descrizione?.errors?.['maxlength']">La descrizione è troppo lunga</li>
                     </ul>
                 </div>
-                <div class="col">
+                <div class="col-4">
                     <div class="form-group">
                         <label for="taglia">Taglia:</label>
-                        <input class="form-control w-50" type="number" formControlName="taglia" id="taglia">
+                        <input class="form-control" type="number" formControlName="taglia" id="taglia">
                     </div>
                     <ul class="text-danger" *ngIf="taglia?.touched && taglia?.invalid">
                         <li *ngIf="taglia?.errors?.['required']">La taglia è obbligatoria</li>
@@ -47,8 +47,8 @@
                 </div>
             </div>
             <div>
-                <div class="form-row">
-                    <div class="col">
+                <div class="form-row justify-content-center">
+                    <div class="col-8">
                         <div class="form-group">
                             <label for="immagine">Immagine:</label>
                             <input class="form-control" type="text" formControlName="immagine" id="immagine">
