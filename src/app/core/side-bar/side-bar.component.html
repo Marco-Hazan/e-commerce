@@ -14,9 +14,10 @@
 </div>
 <h3>Products</h3>
 <hr>
+<div class="row">
+    <button class="btn btn-outline-primary m-1" [class.active] = "categoriaSelezionata == 0" (click) ="select.emit(0); categoriaSelezionata = 0" >All categories</button>
+</div>
+
 <div *ngFor="let c of categorie" class="row">
-    <button class="btn btn-outline-primary" (click) = "select.emit(c.id)">
-        <div class="col">{{c.nome}}</div>
-        <div class="col">{{c.totItems}}</div>
-    </button>
+    <button class="btn btn-outline-primary m-1" [class.active] = "categoriaSelezionata == c.id" (click) = "select.emit(c.id); categoriaSelezionata = c.id">{{c.nome}}({{c.totItems}})    </button>
 </div>

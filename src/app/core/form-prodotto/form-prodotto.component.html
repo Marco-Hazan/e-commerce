@@ -57,7 +57,18 @@
                             <li *ngIf="immagine?.errors?.['required']">L'immagine' è obbligatoria</li>
                         </ul>
                     </div>
-                    <div class="col align-self-end ml-3">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="immagine">Categorie:</label>
+                            <select class="form-control" formControlName="categoria" id="categoria">
+                                <option *ngFor="let cat of categorie | async" [value]="cat.id">{{cat.nome}}</option>
+                            </select>
+                        </div>
+                        <ul class="text-danger" *ngIf="immagine?.dirty && immagine?.invalid">
+                            <li *ngIf="immagine?.errors?.['required']">La categoria è obbligatoria</li>
+                        </ul>
+                    </div>
+                    <div class="col align-self-end">
                         <div class="form-group">
                             <button *ngIf="!modifica" class="btn btn-success">INSERISCI</button>
                             <button *ngIf="modifica" class="btn btn-success">MODIFICA</button>

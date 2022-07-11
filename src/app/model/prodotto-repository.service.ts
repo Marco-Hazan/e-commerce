@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Prodotto } from './prodotto';
 import { Categoria } from './Categoria';
 
@@ -32,6 +32,8 @@ export class ProdottoRepositoryService {
   }
 
   getByCategoria(id_categoria:number):Observable<Prodotto[]>{
-    return this.http.get<Prodotto[]>(this.baseurl + "/categoria/"+id_categoria);
+    const params = new HttpParams();
+    params.set("id",1);
+    return this.http.get<Prodotto[]>(this.baseurl + "/categoria/"+id_categoria,{params: params});
   }
 }

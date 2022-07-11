@@ -25,7 +25,12 @@ export class HomeComponent implements OnInit {
   }
 
   showIdCategoria(id:number){
-    this.prodotti = this.repo.getByCategoria(id);
+    if(id == 0){
+      this.prodotti = this.repo.getAll();
+    }else{
+      this.prodotti = this.repo.getByCategoria(id);
+    }
+    
   }
 
   ngOnInit(): void {

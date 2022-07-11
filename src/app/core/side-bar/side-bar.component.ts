@@ -10,6 +10,7 @@ export class SideBarComponent implements OnInit {
 
   @Input() categorie: Categoria[] | null = [];
   @Output() select = new EventEmitter<number>()
+  categoriaSelezionata:number= 0;
   constructor() { }
 
   
