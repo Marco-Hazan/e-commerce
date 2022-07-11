@@ -9,7 +9,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let p of prodotti">
+        <tr *ngFor="let p of prodotti | async">
             <td>{{p.nome}}</td>
             <td>{{p.prezzo}}</td>
             <td>{{p.descrizione}}</td>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, provideRoutes, Router } from '@angular/router';
 import { Prodotto } from 'src/app/model/prodotto';
 import { ProdottoRepositoryService } from 'src/app/model/prodotto-repository.service';
 
@@ -26,11 +26,18 @@ export class FormProdottoComponent implements OnInit {
     let param = route.snapshot.paramMap.get("id");
     if(param){
       this.prodottoId = Number(param);
-      let p = this.repo.get(this.prodottoId);
-        if(p){
-          this.prodotto = p;
-        }
-        this.modifica = true;
+      this.repo.get(this.prodottoId)
+      .subscribe( p => {
+        this.prodotto = p;
+        this.formProdotto.setValue({
+          'nome': p.nome, 
+          'descrizione': p.descrizione,
+          'prezzo' : p.prezzo,
+          'taglia' : p.taglia,
+          'immagine' : p.immagine
+        });
+      })
+      this.modifica = true;
     }
     this.formProdotto = new FormGroup({
       'nome': new FormControl( this.prodotto.nome,[ Validators.required, Validators.minLength(2) ]),
@@ -72,16 +79,18 @@ export class FormProdottoComponent implements OnInit {
       }
       if(this.modifica){
         p.id = this.prodottoId;
-        let id = this.repo.modifica(p,this.prodottoId);
+        this.repo.modifica(p,this.prodottoId).subscribe(
+          data => this.router.navigateByUrl("/list-prodotti")
+        );
       }else{
-        let id = this.repo.save(p);
+        this.repo.save(p).subscribe(
+          data => this.router.navigateByUrl("/list-prodotti")
+        );
       }
-      this.router.navigateByUrl("/list-prodotti");
     }else{
       this.erroreInserimento = "Errore nei dati immessi";
     }
   }
-
 
 
   ngOnInit(): void {

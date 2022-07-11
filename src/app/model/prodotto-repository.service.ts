@@ -1,29 +1,37 @@
 import { Injectable } from '@angular/core';
-import { DatasourceService } from './datasource.service';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Prodotto } from './prodotto';
+import { Categoria } from './Categoria';
 
 @Injectable()
 export class ProdottoRepositoryService {
 
-  constructor(private datasource: DatasourceService) { }
+  baseurl = "http://localhost:8080/ecommerce/api/v1/prodotti"
 
-  getAll(): Prodotto[]{
-    return this.datasource.getAll();
+  constructor(private http: HttpClient) { }
+
+  getAll(): Observable<Prodotto[]>{
+    return this.http.get<Prodotto[]>(this.baseurl);
   }
 
-  save(p: Prodotto): number{
-    return this.datasource.saveProdotto(p);
+  save(p: Prodotto): Observable<Prodotto>{
+    return this.http.post<Prodotto>(this.baseurl,p);
   }
 
-  get(id:number){
-    return this.datasource.get(id);
+  get(id:number): Observable<Prodotto>{
+    return this.http.get<Prodotto>(this.baseurl+"/"+id);
   }
 
-  delete(id:number){
-    this.datasource.deleteProdotto(id);
+  delete(id:number): Observable<Object>{
+    return this.http.delete(this.baseurl+"/"+id)
   }
 
-  modifica(p:Prodotto,id:number){
-    this.datasource.modifica(p,id);
+  modifica(p : Prodotto, id:number) : Observable<Prodotto>{
+    return this.http.put<Prodotto>(this.baseurl + "/" + id, p);
+  }
+
+  getByCategoria(id_categoria:number):Observable<Prodotto[]>{
+    return this.http.get<Prodotto[]>(this.baseurl + "/categoria/"+id_categoria);
   }
 }

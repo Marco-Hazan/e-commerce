@@ -1,3 +1,5 @@
+import { Categoria } from "./Categoria";
+
 export interface Prodotto{
     id?: number;
     nome:string;
@@ -5,4 +7,5 @@ export interface Prodotto{
     taglia:number;
     prezzo:number;
     immagine: string;
+    categoria? : Categoria;
 }

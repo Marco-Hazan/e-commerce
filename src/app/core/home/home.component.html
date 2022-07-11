@@ -1,10 +1,10 @@
 <div class="row m-5">
   <div class="col-3">
-    <app-side-bar></app-side-bar>
+    <app-side-bar  [categorie]="categorie | async" (select) = showIdCategoria($event)></app-side-bar>
   </div>
   <div class="col-9">
     <div class="card-columns">
-      <div *ngFor="let p of prodotti">
+      <div *ngFor="let p of prodotti | async">
         <app-prodotto [prodotto]="p" (buy)="showComprato($event)" ></app-prodotto>
       </div>
     </div>

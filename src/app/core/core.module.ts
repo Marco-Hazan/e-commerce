@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { FormProdottoComponent } from './form-prodotto/form-prodotto.component';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
