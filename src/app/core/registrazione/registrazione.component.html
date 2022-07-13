@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+    <div class="col-4 border-primary bg-secondary">
+        <h2>Registrazione</h2>
+
+        <form action="" (ngSubmit)="registrazione()" [formGroup]="formRegistrazione" autocomplete="off">
+            <div class="form-row">
+                <div class="col-8">
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input class="form-control " formControlName="nome" type="text" id="nome" [(ngModel)]="utente.nome">
+                        <ul class="text-danger" *ngIf="nome?.touched && nome?.invalid">
+                            <li *ngIf="nome?.errors?.['required']">Il nome è obbligatorio</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="cognome">Cognome:</label>
+                        <input class="form-control" type="text" formControlName="cognome" id="cognome" [(ngModel)]="utente.cognome">
+                    </div>
+                    <ul class="text-danger" *ngIf="cognome?.touched && cognome?.invalid">
+                        <li *ngIf="cognome?.errors?.['required']">Il cognome è obbligatorio</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-row justify-content-center">
+                <div class="col-8">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input class="form-control" formControlName="username" id="username" [(ngModel)]="utente.username">
+                    </div>
+                    <ul class="text-danger" *ngIf="username?.touched && username?.invalid">
+                        <li *ngIf="username?.errors?.['required']">Username obbligatorio</li>
+                    </ul>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input class="form-control" type="password" formControlName="password" id="password" [(ngModel)]="utente.password">
+                    </div>
+                    <ul class="text-danger" *ngIf="password?.touched && password?.invalid">
+                        <li *ngIf="password?.errors?.['required']">La taglia è obbligatoria</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="form-row justify-content-center">
+                    <div class="col-8">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input class="form-control" type="text" formControlName="email" id="email" [(ngModel)]="utente.email">
+                        </div>
+                        <ul class="text-danger" *ngIf="email?.dirty && email?.invalid">
+                            <li *ngIf="email?.errors?.['required']">L'immagine' è obbligatoria</li>
+                        </ul>
+                    </div>
+                    <div class="col align-self-end">
+                        <div class="form-group">
+                            <button class="btn btn-success">REGISTRATI</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-danger justify-content-center mr-5">
+                    {{erroreInserimento}}
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

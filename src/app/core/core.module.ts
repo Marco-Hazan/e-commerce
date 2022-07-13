@@ -9,6 +9,8 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { FormProdottoComponent } from './form-prodotto/form-prodotto.component';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { RegistrazioneComponent } from './registrazione/registrazione.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -19,6 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     FormProdottoComponent,
     SideBarComponent,
+    RegistrazioneComponent,
+    LoginComponent,
   ],
   imports: [
     CommonModule,

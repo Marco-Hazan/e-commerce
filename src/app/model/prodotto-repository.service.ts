@@ -31,9 +31,7 @@ export class ProdottoRepositoryService {
     return this.http.put<Prodotto>(this.baseurl + "/" + id, p);
   }
 
-  getByCategoria(id_categoria:number):Observable<Prodotto[]>{
-    const params = new HttpParams();
-    params.set("id",1);
-    return this.http.get<Prodotto[]>(this.baseurl + "/categoria/"+id_categoria,{params: params});
+  getByCategoria(categorie:number[]):Observable<Prodotto[]>{
+    return this.http.get<Prodotto[]>(this.baseurl + "/categoria/",{params: {categorie:categorie}});
   }
 }

@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
     if(id == 0){
       this.prodotti = this.repo.getAll();
     }else{
-      this.prodotti = this.repo.getByCategoria(id);
+      this.prodotti = this.repo.getByCategoria([id]);
     }
     
   }

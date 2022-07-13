@@ -4,6 +4,7 @@ import { DatasourceService } from './datasource.service';
 import { ProdottoRepositoryService } from './prodotto-repository.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CategoriaRepositoryService } from './categoria-repository.service';
+import { UtenteRepositoryService } from './utente-repository.service';
 
 
 
@@ -13,6 +14,6 @@ import { CategoriaRepositoryService } from './categoria-repository.service';
     CommonModule,
     HttpClientModule
   ],
-  providers: [DatasourceService, ProdottoRepositoryService, CategoriaRepositoryService]
+  providers: [DatasourceService, ProdottoRepositoryService, CategoriaRepositoryService, UtenteRepositoryService]
 })
 export class ModelModule { }
