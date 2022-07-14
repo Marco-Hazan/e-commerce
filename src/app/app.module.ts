@@ -7,10 +7,10 @@ import { ModelModule } from './model/model.module';
 import { CoreModule } from './core/core.module';
 import { FootComponent } from './foot/foot.component';
 import { AuthInterceptor } from './helpers/auth.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent,
     FootComponent,
   ],
   imports: [
@@ -18,9 +18,6 @@ import { AuthInterceptor } from './helpers/auth.interceptor';
     AppRoutingModule,
     ModelModule,
     CoreModule
-  ],
-  providers: [
-    AuthInterceptor
   ],
   bootstrap: [AppComponent]
 })

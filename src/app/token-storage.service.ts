@@ -34,4 +34,8 @@ export class TokenStorageService {
     return x;
   }
 
+  clear(){
+    sessionStorage.clear();
+  }
+
 }

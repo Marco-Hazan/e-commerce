@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TokenStorageService } from '../token-storage.service';
+import { TokenStorageService } from 'src/app/token-storage.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,8 +7,8 @@ import { TokenStorageService } from '../token-storage.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
-  @Input() loggedin:boolean = false;
+  
+  loggedin:boolean = false;
   constructor(private tokenService: TokenStorageService) {
     if(tokenService.getToken() != null){
       this.loggedin = true;

@@ -8,10 +8,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { FormProdottoComponent } from './form-prodotto/form-prodotto.component';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RegistrazioneComponent } from './registrazione/registrazione.component';
 import { LoginComponent } from './login/login.component';
-import { AuthInterceptor } from '../helpers/auth.interceptor';
+import { AuthInterceptor, authInterceptorProviders } from '../helpers/auth.interceptor';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 
 
@@ -24,6 +25,7 @@ import { AuthInterceptor } from '../helpers/auth.interceptor';
     SideBarComponent,
     RegistrazioneComponent,
     LoginComponent,
+    NavBarComponent
   ],
   imports: [
     CommonModule,
@@ -31,6 +33,8 @@ import { AuthInterceptor } from '../helpers/auth.interceptor';
     ReactiveFormsModule,
     RouterModule
   ],
-  providers: [AuthInterceptor]
+  providers: [
+    authInterceptorProviders
+  ]
 })
 export class CoreModule { }
