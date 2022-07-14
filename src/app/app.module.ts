@@ -6,6 +6,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ModelModule } from './model/model.module';
 import { CoreModule } from './core/core.module';
 import { FootComponent } from './foot/foot.component';
+import { AuthInterceptor } from './helpers/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,9 @@ import { FootComponent } from './foot/foot.component';
     ModelModule,
     CoreModule
   ],
-  providers: [],
+  providers: [
+    AuthInterceptor
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

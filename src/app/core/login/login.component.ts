@@ -39,8 +39,12 @@ export class LoginComponent implements OnInit {
   login(){
     this.repo.login(this.loginRequest).subscribe(
       data =>{
-        console.log(data);
+        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveUser(data);
         this.router.navigateByUrl("/home");
+      },
+      err => {
+        console.log("ciao");
       }
     )
   }

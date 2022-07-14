@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrazioneComponent } from './registrazione/registrazione.component';
 import { LoginComponent } from './login/login.component';
+import { AuthInterceptor } from '../helpers/auth.interceptor';
 
 
 
@@ -29,6 +30,7 @@ import { LoginComponent } from './login/login.component';
     ModelModule,
     ReactiveFormsModule,
     RouterModule
-  ]
+  ],
+  providers: [AuthInterceptor]
 })
 export class CoreModule { }
